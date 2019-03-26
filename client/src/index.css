@@ -1,3 +1,43 @@
+.app {
+
+}
+
 .strike-through {
   text-decoration-line: line-through;
+}
+
+.acconote-title {
+  padding: 0 0 1px 0;
+  background-color: aliceblue;
+  margin-bottom: 10px;
+}
+
+.delete-box {
+  display: inline-block;
+  background-color: gainsboro;
+  height: 20rem;
+}
+
+.todo-list {
+  margin-right: 5px;
+  box-sizing: border-box;
+}
+
+/* Things that are dragged around */
+
+.collection-item {
+  cursor: pointer;
+}
+
+.hold {
+  border: solid #ccc 4px;
+}
+
+.hovered {
+  background-color: #f4f4f4;
+  border-style: dashed;
+}
+
+.invisible {
+  display: none;
 }
