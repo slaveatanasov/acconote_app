@@ -100,9 +100,11 @@ class TodoList extends React.Component {
       <div className="row">
         <TodoForm addTodo={this.addTodo}/>
         <br />
-        <ul className="collection col s8 todo-list">
-          {todos}
-        </ul>
+        <div className="col s9">
+          <ul className="collection todo-list">
+            {todos}
+          </ul>
+        </div>
         <DeleteBox 
         onDragOverFn={this.onDragOverFn.bind(this)}  
         onDragDropFn={this.onDragDropFn.bind(this)}  

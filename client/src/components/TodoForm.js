@@ -15,17 +15,21 @@ class TodoForm extends React.Component {
   }
 
   onSubmit = () => {
-    this.props.addTodo(this.state.inputValue);
-    this.setState({
-      inputValue: ""
-    })
+    if(this.state.inputValue !== "") {
+      this.props.addTodo(this.state.inputValue);
+      this.setState({
+        inputValue: ""
+      })
+    } else {
+      window.alert("Enter a task before submitting...")
+    }
   }
 
   render() {
     return(
       <div>
-        <input type="text" name="inputValue" value={this.state.inputValue} onChange={this.handleChange}/>
-        <button onClick={this.onSubmit}>Add todo...</button>
+        <input ref={input => input && input.focus()} placeholder="Add your task here..." type="text" name="inputValue" value={this.state.inputValue} onChange={this.handleChange}/>
+        <button className="waves-effect waves-light #80cbc4 teal lighten-1 btn" onClick={this.onSubmit}>Add task...</button>
       </div>
     )
   }

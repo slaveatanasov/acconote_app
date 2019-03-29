@@ -1,9 +1,9 @@
-.app {
-
+.app-title {
+  border-radius: 0.5rem;
 }
 
-.strike-through {
-  text-decoration-line: line-through;
+.red-completed {
+  background-color: lightcoral !important;
 }
 
 .acconote-title {
@@ -12,21 +12,43 @@
   margin-bottom: 10px;
 }
 
-.delete-box {
-  display: inline-block;
+/* .delete-box {
+  margin: 0;
+  padding: 0;
   background-color: gainsboro;
-  height: 20rem;
-}
+} */
 
 .todo-list {
   margin-right: 5px;
   box-sizing: border-box;
 }
 
+.trash-icon {
+  display: inline-block;
+}
+
+.trash-icon i {
+  margin: 0;
+  font-size: 10rem;
+  padding: 2.5rem;
+  color: crimson;
+}
+
+.delete-box span {
+  padding-left: 1.5rem;
+  font-style: italic; 
+  font-size: 1.3rem;
+}
+
 /* Things that are dragged around */
 
 .collection-item {
   cursor: pointer;
+}
+
+.collection-item:hover {
+  cursor: pointer;
+  background-color: aliceblue;
 }
 
 .hold {
