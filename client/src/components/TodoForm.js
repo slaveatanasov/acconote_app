@@ -29,7 +29,7 @@ class TodoForm extends React.Component {
     return(
       <div>
         <input ref={input => input && input.focus()} placeholder="Add your task here..." type="text" name="inputValue" value={this.state.inputValue} onChange={this.handleChange}/>
-        <button className="waves-effect waves-light #80cbc4 teal lighten-1 btn" onClick={this.onSubmit}>Add task...</button>
+        <button className="waves-effect waves-light #80cbc4 teal lighten-1 btn myBtn" onClick={this.onSubmit}>Add task</button>
       </div>
     )
   }

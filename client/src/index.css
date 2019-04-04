@@ -4,23 +4,35 @@
 
 .red-completed {
   background-color: lightcoral !important;
+  transition: 0.3s ease-in;
+  color: white;
+  text-decoration-line: line-through;
 }
 
 .acconote-title {
   padding: 0 0 1px 0;
-  background-color: aliceblue;
   margin-bottom: 10px;
 }
 
-/* .delete-box {
-  margin: 0;
-  padding: 0;
-  background-color: gainsboro;
-} */
+.delete-box {
+}
+
+.myBtn {
+  width: 200px;
+}
+
+.app-logo {
+  background-image: url('../src/assets/img/acconote-logo-2.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20rem;
+  height: 18vh;
+}
 
 .todo-list {
   margin-right: 5px;
   box-sizing: border-box;
+  border-color: #ffffff;
 }
 
 .trash-icon {
@@ -31,7 +43,8 @@
   margin: 0;
   font-size: 10rem;
   padding: 2.5rem;
-  color: crimson;
+  /* color: crimson; */
+  color: rgb(241, 59, 59);
 }
 
 .delete-box span {
@@ -44,11 +57,14 @@
 
 .collection-item {
   cursor: pointer;
+  transition: 0.1s ease-out;
 }
 
 .collection-item:hover {
   cursor: pointer;
   background-color: aliceblue;
+  border: 2px solid aliceblue;
+  transition: 0.1s ease-out;
 }
 
 .hold {
