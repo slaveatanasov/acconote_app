@@ -79,3 +79,13 @@
 .invisible {
   display: none;
 }
+
+.delete-box-big {
+  transform: scale(0.9);
+  transition: ease-in 0.2s;
+}
+
+.delete-box-return-default {
+  transform: scale(1);
+  transition: ease-in 0.2s;
+}
