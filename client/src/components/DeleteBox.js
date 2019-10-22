@@ -1,22 +1,32 @@
-import React from "react";
+import React from 'react';
 import classnames from 'classnames';
 
+const DeleteBox = ({
+	deleteBoxStatus,
+	onDragDrop,
+	onDragOver,
+	onDragLeave
+}) => {
+	const deleteIconClasses = classnames({
+		fas: true,
+		'fa-trash-alt': true,
+		'delete-box-change': deleteBoxStatus,
+		'delete-box-return-default': !deleteBoxStatus
+	});
 
-const DeleteBox = ({onDragDropFn, onDragOverFn, onDragLeaveFn, overDeleteBoxStatus}) => {
-  const deleteBoxClasses = classnames({
-    "delete-box": true,
-     "col": true, 
-     "s3": true,
-     "delete-box-big": overDeleteBoxStatus,
-     "delete-box-return-default": !overDeleteBoxStatus
-  })
-
-    return(
-      <div className={deleteBoxClasses} onDrop={onDragDropFn} onDragOver={onDragOverFn} onDragLeave={onDragLeaveFn}>
-        <span>Drag here to delete.</span>
-        <div className="trash-icon"><i className="fas fa-trash-alt"></i></div>
-      </div>
-    )
-}
+	return (
+		<div
+			className='delete-box col s3'
+			onDrop={e => onDragDrop(e)}
+			onDragOver={e => onDragOver(e)}
+			onDragLeave={e => onDragLeave(e)}
+		>
+			<span>Drag here to delete.</span>
+        <div className='trash-icon'>
+          <i className={deleteIconClasses}></i>
+        </div>
+		</div>
+	);
+};
 
 export default DeleteBox;

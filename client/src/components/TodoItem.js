@@ -1,17 +1,24 @@
 import React from 'react';
 import classnames from 'classnames';
 
-const TodoItem = ({text, completed, onToggle, onDragStartFn, onDragEndFn, onDragOverFn}) => {
-  const todoLiDecoration = classnames({
-    "collection-item": text,
-    'red-completed': completed,
-  })
-  
-  return(
-    <li className={todoLiDecoration} draggable="true" onDragStart={onDragStartFn} onDragEnd={onDragEndFn} onDragOver={onDragOverFn} onClick={onToggle}>
-      <span>{text}</span>
-    </li>
-  )
-}
+const TodoItem = ({ todo, onToggle, onDragStart, onDragEnd, onDragOver }) => {
+	const todoItemClasses = classnames({
+		'collection-item': todo.text,
+		'red-completed': todo.completed
+	});
+
+	return (
+		<li
+			className={todoItemClasses}
+			draggable='true'
+			onDragStart={e => onDragStart(e, todo._id)}
+			onDragEnd={e => onDragEnd(e, todo._id)}
+			onDragOver={onDragOver}
+			onClick={() => onToggle(todo)}
+		>
+			<span>{todo.text}</span>
+		</li>
+	);
+};
 
 export default TodoItem;
