@@ -2,16 +2,16 @@ import React from 'react';
 import classnames from 'classnames';
 
 const DeleteBox = ({
-	deleteBoxStatus,
+	boxStatus,
 	onDragDrop,
 	onDragOver,
 	onDragLeave
 }) => {
-	const deleteIconClasses = classnames({
-		fas: true,
+	const trashIconClasses = classnames({
+		"fas": true,
 		'fa-trash-alt': true,
-		'delete-box-change': deleteBoxStatus,
-		'delete-box-return-default': !deleteBoxStatus
+		'trash-icon-transform': boxStatus,
+		'trash-icon-reset': !boxStatus
 	});
 
 	return (
@@ -22,9 +22,9 @@ const DeleteBox = ({
 			onDragLeave={e => onDragLeave(e)}
 		>
 			<span>Drag here to delete.</span>
-        <div className='trash-icon'>
-          <i className={deleteIconClasses}></i>
-        </div>
+			<div className='trash-icon'>
+				<i className={trashIconClasses}></i>
+			</div>
 		</div>
 	);
 };

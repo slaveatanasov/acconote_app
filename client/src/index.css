@@ -1,22 +1,4 @@
-.app-title {
-  border-radius: 0.5rem;
-}
-
-.red-completed {
-  background-color: lightcoral !important;
-  transition: 0.3s ease-in;
-  color: white;
-  text-decoration-line: line-through;
-}
-
-.acconote-title {
-  padding: 0 0 1px 0;
-  margin-bottom: 10px;
-}
-
-.myBtn {
-  width: 200px;
-}
+/* App | Container */
 
 .app-logo {
   background-image: url('../src/assets/img/acconote-logo-2.png');
@@ -26,30 +8,19 @@
   height: 18vh;
 }
 
-.todo-list {
+.add-task-btn {
+  width: 200px;
+}
+
+/* Todo list */
+
+.collection {
   margin-right: 5px;
   box-sizing: border-box;
   border-color: #ffffff;
 }
 
-.trash-icon {
-  display: inline-block;
-}
-
-.trash-icon i {
-  margin: 0;
-  font-size: 10rem;
-  padding: 2.5rem;
-  color: rgb(241, 59, 59);
-}
-
-.delete-box span {
-  padding-left: 1.5rem;
-  font-style: italic; 
-  font-size: 1.3rem;
-}
-
-/* Things that are dragged around */
+/* Todo items */
 
 .collection-item {
   cursor: pointer;
@@ -58,9 +29,19 @@
 
 .collection-item:hover {
   cursor: pointer;
-  background-color: aliceblue;
-  border: 2px solid aliceblue;
-  transition: 0.1s ease-out;
+  /* background-color: rgb(240, 248, 255); */
+  background-color: rgba(250, 250, 250, 0.815);
+  /* padding: 0.8rem;
+  padding-left: 1.55rem; */
+  /* border: 1px solid aliceblue; */
+  /* transition: 0.1s ease-out; */
+}
+
+.red-completed {
+  background-color: lightcoral !important;
+  transition: 0.2s ease-in;
+  color: white;
+  text-decoration-line: line-through;
 }
 
 .hold {
@@ -76,13 +57,36 @@
   display: none;
 }
 
-.delete-box-change {
+/* Delete section */
+
+.delete-box {
+  text-align: center;
+  padding: 0;
+}
+
+.delete-box span {
+  font-style: italic; 
+  font-size: 1.3rem;
+}
+
+.trash-icon {
+  display: inline-block;
+}
+
+.trash-icon i {
+  margin: 0;
+  font-size: 10rem;
+  padding: 2.5rem;
+  color: rgb(241, 59, 59);
+}
+
+.trash-icon-transform {
   transform: rotate(20deg) scale(0.9);
   transition: ease-in 0.2s;
   color: rgb(243, 159, 32) !important;
 }
 
-.delete-box-return-default {
+.trash-icon-reset {
   transform: scale(1);
   transition: ease-in 0.2s;
 }

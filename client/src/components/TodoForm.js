@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const TodoForm = props => {
+const TodoForm = ({ addTodo }) => {
 	const [inputValue, setInputValue] = useState('');
 
 	const handleChange = e => {
@@ -10,7 +10,7 @@ const TodoForm = props => {
 	const onSubmit = e => {
 		e.preventDefault();
 		if (inputValue !== '') {
-			props.addTodo(inputValue);
+			addTodo(inputValue);
 			setInputValue('');
 		} else {
 			window.alert('Enter a task before submitting...');
@@ -29,7 +29,7 @@ const TodoForm = props => {
 					onChange={handleChange}
 				/>
 				<button
-					className='waves-effect waves-light #80cbc4 teal lighten-1 btn myBtn'
+					className='waves-effect waves-light #80cbc4 teal lighten-1 btn add-task-btn'
 					type='submit'
 				>
 					Add task

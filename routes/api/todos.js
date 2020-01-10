@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-
 const Todo = require('../../models/Todo');
 
 // @route GET api/todos

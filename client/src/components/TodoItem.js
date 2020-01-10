@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-const TodoItem = ({ todo, onToggle, onDragStart, onDragEnd, onDragOver }) => {
+const TodoItem = ({ todo, onToggle, onDragStart, onDragEnd }) => {
 	const todoItemClasses = classnames({
 		'collection-item': todo.text,
 		'red-completed': todo.completed
@@ -9,11 +9,11 @@ const TodoItem = ({ todo, onToggle, onDragStart, onDragEnd, onDragOver }) => {
 
 	return (
 		<li
+			id={todo._id}
 			className={todoItemClasses}
 			draggable='true'
-			onDragStart={e => onDragStart(e, todo._id)}
-			onDragEnd={e => onDragEnd(e, todo._id)}
-			onDragOver={onDragOver}
+			onDragStart={e => onDragStart(e)}
+			onDragEnd={e => onDragEnd(e)}
 			onClick={() => onToggle(todo)}
 		>
 			<span>{todo.text}</span>

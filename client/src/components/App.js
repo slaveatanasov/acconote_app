@@ -3,9 +3,8 @@ import TodoList from './TodoList';
 
 const App = () => {
 	return (
-		<div className='app container'>
-			<div className='app-title center-align acconote-title'>
-				<div className='app-logo'></div>
+		<div className='container'>
+			<div className='app-logo'>
 			</div>
 			<TodoList />
 		</div>

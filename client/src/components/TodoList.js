@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { apiURL } from '../config/index';
 import TodoItem from './TodoItem';
 import TodoForm from './TodoForm';
 import DeleteBox from './DeleteBox';
@@ -10,7 +11,7 @@ const TodoList = () => {
 
 	useEffect(() => {
 		axios
-			.get('http://127.0.0.1:5000/api/todos')
+			.get(`${apiURL}/todos`)
 			.then(res => {
 				setTodos(res.data);
 			})
@@ -18,12 +19,12 @@ const TodoList = () => {
 	}, []);
 
 	const addTodo = todoValue => {
-		const todo = { text: todoValue };
+		const todoItem = { text: todoValue };
 		axios
-			.post('http://127.0.0.1:5000/api/todos', todo)
+			.post(`${apiURL}/todos`, todoItem)
 			.then(res => {
-				let newTodo = res.data;
-				setTodos([...todos, newTodo]);
+				let todo = res.data;
+				setTodos([...todos, todo]);
 			})
 			.catch(err => console.log(err.response));
 	};
@@ -31,7 +32,7 @@ const TodoList = () => {
 	const toggleTodo = todo => {
 		let updTodo = { ...todo, completed: !todo.completed };
 		axios
-			.put(`http://127.0.0.1:5000/api/todos/${todo._id}`, updTodo)
+			.put(`${apiURL}/todos/${todo._id}`, updTodo)
 			.then(() => {
 				const todoState = todos.map(todo =>
 					todo._id === updTodo._id
@@ -42,31 +43,36 @@ const TodoList = () => {
 			});
 	};
 
-	const onDragStart = (e, itemId) => {
-		console.log(`Drag started, item id: ${itemId}`);
-		e.dataTransfer.setData('itemId', itemId);
+	const onDragStart = e => {
+		e.persist()
+		e.dataTransfer.setData('text/plain', e.target.id);
+		e.dataTransfer.effectAllowed = 'move';
+		console.log(`Drag start, item id: ${e.target.id}`);
 	};
 
-	const onDragEnd = itemId => {
-		console.log(`Drag ended, item id: ${itemId}`);
+	const onDragEnd = e => {
+		e.persist()
 		setDeleteBoxStatus(false);
+		console.log(`Drag end, item id: ${e.target.id}`);
 	};
 
 	const onDragOver = e => {
 		e.preventDefault();
 		setDeleteBoxStatus(true);
+		e.dataTransfer.dropEffect = 'move';
 	};
 
 	const onDragLeave = e => {
 		e.preventDefault();
 		setDeleteBoxStatus(false);
+		console.log(`Drag leave, item id: ${e.target.id}`);
 	};
 
 	const onDragDrop = e => {
-		let itemId = e.dataTransfer.getData('itemId');
+		let itemId = e.dataTransfer.getData('text/plain');
 		console.log(`Drag drop, item id: ${itemId}`);
 		axios
-			.delete(`http://127.0.0.1:5000/api/todos/${itemId}`)
+			.delete(`${apiURL}/todos/${itemId}`)
 			.then(() => {
 				const todosRefined = todos.filter(todo => todo._id !== itemId);
 				setTodos(todosRefined);
@@ -90,10 +96,10 @@ const TodoList = () => {
 			<TodoForm addTodo={addTodo} />
 			<br />
 			<div className='col s9'>
-				<ul className='collection todo-list'>{todoItems}</ul>
+				<ul className='collection'>{todoItems}</ul>
 			</div>
 			<DeleteBox
-				deleteBoxStatus={deleteBoxStatus}
+				boxStatus={deleteBoxStatus}
 				onDragOver={onDragOver}
 				onDragDrop={onDragDrop}
 				onDragLeave={onDragLeave}
