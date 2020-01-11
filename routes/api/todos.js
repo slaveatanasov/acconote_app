@@ -8,7 +8,6 @@ const Todo = require('../../models/Todo');
 router.get('/', (req, res) => {
   Todo.find()
     .then(todos => res.json(todos))
-    // .then(todos => todos.length === 0 ? res.status(404).json({noResults: "No todos found."}) : res.json(todos))
     .catch(err => res.status(404).json({noResults: "No todos found."}))
 })
 
@@ -39,7 +38,7 @@ router.post('/', (req, res) => {
 // @access  Public
 router.delete('/:id', (req, res) => {
   const id = req.params.id;
-  Todo.remove({_id: id})
+  Todo.deleteOne({_id: id})
     .then(() => res.json({result: `Deleted todo with id: ${id}`}))
     .catch(err => res.status(404).json({error: "Could not delete todo."}))
 })

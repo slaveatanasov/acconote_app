@@ -11,7 +11,7 @@ const TodoList = () => {
 
 	useEffect(() => {
 		axios
-			.get(`${apiURL}/todos`)
+			.get(`${apiURL}/api/todos`)
 			.then(res => {
 				setTodos(res.data);
 			})
@@ -21,7 +21,7 @@ const TodoList = () => {
 	const addTodo = todoValue => {
 		const todoItem = { text: todoValue };
 		axios
-			.post(`${apiURL}/todos`, todoItem)
+			.post(`${apiURL}/api/todos`, todoItem)
 			.then(res => {
 				let todo = res.data;
 				setTodos([...todos, todo]);
@@ -32,7 +32,7 @@ const TodoList = () => {
 	const toggleTodo = todo => {
 		let updTodo = { ...todo, completed: !todo.completed };
 		axios
-			.put(`${apiURL}/todos/${todo._id}`, updTodo)
+			.put(`${apiURL}/api/todos/${todo._id}`, updTodo)
 			.then(() => {
 				const todoState = todos.map(todo =>
 					todo._id === updTodo._id
@@ -65,14 +65,14 @@ const TodoList = () => {
 	const onDragLeave = e => {
 		e.preventDefault();
 		setDeleteBoxStatus(false);
-		console.log(`Drag leave, item id: ${e.target.id}`);
+		console.log(`Drag leave`);
 	};
 
 	const onDragDrop = e => {
 		let itemId = e.dataTransfer.getData('text/plain');
 		console.log(`Drag drop, item id: ${itemId}`);
 		axios
-			.delete(`${apiURL}/todos/${itemId}`)
+			.delete(`${apiURL}/api/todos/${itemId}`)
 			.then(() => {
 				const todosRefined = todos.filter(todo => todo._id !== itemId);
 				setTodos(todosRefined);
