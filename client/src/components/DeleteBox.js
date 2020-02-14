@@ -1,12 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-const DeleteBox = ({
-	boxStatus,
-	onDragDrop,
-	onDragOver,
-	onDragLeave
-}) => {
+const DeleteBox = ({ boxStatus, onDragDrop, onDragOver, onDragLeave}) => {
 	const trashIconClasses = classnames({
 		"fas": true,
 		'fa-trash-alt': true,
